@@ -13,25 +13,24 @@ function App() {
   const [localSavedGroups, setLocalSavedGroups] = useState<Record<string, any>[]>(JSON.parse(localStorage.getItem('savedGroups')!))
   const resultRef = useRef<HTMLDivElement>(null);
 
+  // Assigning char data to state
   async function charFetch() {
     setLoading(true)
-    const url: string = "https://genshin-db-api.vercel.app/api/v5/characters?query=names&matchCategories=true&verboseCategories=true"
+    const url: string = "/data/char_data.json"
     try{
       const response = await fetch(url);
       const result = await response.json();
-      const filterTraveler = result.filter((item: Record<string, any>) => !["Aether", "Lumine"].includes(item.name))
+      const filterTraveler = result.filter((item: Record<string, any>) => !["Aether", "Lumine"].includes(item.name)) // filtering aether and lumine
       const updateTraveler = [...filterTraveler, { id: 10000007, name: "Traveler", version: "1.0", rarity: 5 }].map((item: Record<string, any>) => ({
         ...item,
         active: true
-      }))
-      updateTraveler.sort((a: Record<string, any>, b: Record<string, any>) => parseFloat(a.id) - parseFloat(b.id));
-      console.log(updateTraveler);
+      })) // make traveler only one char
+      updateTraveler.sort((a: Record<string, any>, b: Record<string, any>) => parseFloat(a.id) - parseFloat(b.id)); // sort char base on id
       setListChar(updateTraveler)
       setLoading(false)
       
     }catch(e){
       console.log(e);
-      
     }
   }
 
@@ -50,27 +49,14 @@ function App() {
     );
   };
 
-  useEffect(() => {
-    console.log("randomresult", randomResult);
-  }, [randomResult]);
-  useEffect(() => {
-    console.log("storageId", storageId);
-  }, [storageId]);
-  useEffect(() => {
-    console.log("localSavedGroups", localSavedGroups);
-  }, [localSavedGroups]);
-  useEffect(() => {
-    console.log("navType", navType);
-  }, [navType]);
-
   // Handle random grouping
   const groupActiveItems = (items: Record<string, any>[]) => {
-    const activeItems = items.filter(item => item.active); //filtering active char
-    const shuffled = [...activeItems].sort(() => Math.random() - 0.5);
+    const activeItems = items.filter(item => item.active); // filtering active char
+    const shuffled = [...activeItems].sort(() => Math.random() - 0.5); // shufling list of active/used char
     let groups: { group: Record<string, any>[]; star: number }[] = [];
     while(shuffled.length > 0){
       let currentGroup: Record<string, any>[] = []
-      let usedNames = new Set();
+      let usedNames = new Set(); // handling not double traveler if included elements
       for (let i = 0; i < shuffled.length; i++) {
         if (currentGroup.length >= 8) break;
         const item = shuffled[i];
@@ -83,15 +69,13 @@ function App() {
       }
       groups.push({ group: currentGroup, star: 0 });
     }
+    // handling remaining group
     const lastGroupIndex = groups.length - 1;
     if (groups[lastGroupIndex].group.length < 8) {
       const remainder = groups[lastGroupIndex].group;
-      console.log("remainder", remainder);
       const needed = 8 - remainder.length;
-      console.log("needed", needed);
       let usedNames = new Set(remainder.map(item => item.name));
       let extraItems: Record<string, any>[] = []
-      console.log("usedNames", usedNames);
       for (let item of activeItems.sort(() => Math.random() - 0.5)) {
         if (!usedNames.has(item.name)) {
           usedNames.add(item.name);
@@ -99,10 +83,9 @@ function App() {
           if (extraItems.length === needed) break;
         }
       }
-      console.log("extraItems", extraItems);
       groups[lastGroupIndex].group = [...remainder, ...extraItems];
     }
-    console.log(groups);
+    // setting local storage 
     const savedGroups: Record<string, any>[] = JSON.parse(localStorage.getItem('savedGroups')!)
     if(savedGroups && savedGroups.length !== 0){
       localStorage.setItem('savedGroups', JSON.stringify([...savedGroups, {id: savedGroups[savedGroups.length -1].id + 1, groups, name: `Saved result ${savedGroups[savedGroups.length -1].id + 1}`, date: Date.now()}]))
@@ -116,12 +99,13 @@ function App() {
     return groups;
   };
 
+  // date formatting for saved result list
   const formatDate = (timestamp: number): string => {
     const date = new Date(timestamp);
     return date.toLocaleString(navigator.language, { 
       day: "2-digit", month: "2-digit", year: "numeric", 
       hour: "2-digit", minute: "2-digit", second: '2-digit'
-    }); // Replacing comma with a dash
+    });
   };
 
   return (
@@ -131,11 +115,12 @@ function App() {
       <meta name="keywords" content="Genshin, Genshin Impact, Spiral Abyss, Randomizer, Spiral Abyss Randomizer, random spiral abyss, 原神, 深境螺旋, ルーレット螺旋螺旋" />
       <meta name="robots" content="index, follow" />
       <h1 className='mb-8 text-lg sm:text-xl md:text-3xl font-bold'>Spiral Abyss Party Randomizer</h1>
-      <ul className='flex flex-row mb-6'>
-        <li onClick={() => {setNavType(1)}} className={`flex-1 text-center ${navType === 1 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2 cursor-pointer`}>Randomize</li>
-        <li onClick={() => {setNavType(2)}} className={`flex-1 text-center ${navType === 2 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2 cursor-pointer`}>Saved Result</li>
-        <li onClick={() => {setNavType(3)}} className={`flex-1 text-center ${navType === 3 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2 cursor-pointer`}>About</li>
-      </ul>
+      {/* navbar type 1 = main, 2 = saved, 3 = about */}
+      <nav className='flex flex-row mb-6'>
+        <button onClick={() => {setNavType(1)}} className={`flex-1 text-center ${navType === 1 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>Randomize</button>
+        <button onClick={() => {setNavType(2)}} className={`flex-1 text-center ${navType === 2 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>Saved Result</button>
+        <button onClick={() => {setNavType(3)}} className={`flex-1 text-center ${navType === 3 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>About</button>
+      </nav>
       {navType === 1 ? (
         <>
           {!loading && (
@@ -159,7 +144,6 @@ function App() {
                         { id: 10000012, name: "Traveler", version: "1.0", rarity: 5, elementText: "Pyro", active: true }
                       ]
                       updateTraveler.sort((a: Record<string, any>, b: Record<string, any>) => parseFloat(a.id) - parseFloat(b.id));
-                      console.log(updateTraveler);
                       setListChar(updateTraveler)
                     } else {
                       const filterTraveler = listChar.filter((item: Record<string, any>) => item?.name !== "Traveler")
@@ -168,7 +152,6 @@ function App() {
                         { id: 10000007, name: "Traveler", version: "1.0", rarity: 5, active: true },
                       ]
                       updateTraveler.sort((a: Record<string, any>, b: Record<string, any>) => parseFloat(a.id) - parseFloat(b.id));
-                      console.log(updateTraveler);
                       setListChar(updateTraveler)
                     }
                   }}
@@ -192,13 +175,13 @@ function App() {
                   {char?.name === "Traveler" ? (
                     <>
                     {char?.elementText && 
-                      <img src={`/src/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
+                      <img src={`/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
                     }
                     <img loading='lazy' src={`https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png`} alt="char" />
                     </>
                   ) : (
                     <>
-                    <img src={`/src/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
+                    <img src={`/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
                     <img loading='lazy' src={`https://api.hakush.in/gi/UI/${char?.images?.filename_icon}.webp`} alt="char" />
                     </>
                   )}
@@ -232,13 +215,13 @@ function App() {
                         {char?.name === "Traveler" ? (
                           <>
                           {char?.elementText && 
-                            <img src={`/src/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
+                            <img src={`/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
                           }
                           <img loading='lazy' src={`https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png`} alt="char" />
                           </>
                         ) : (
                           <>
-                          <img src={`/src/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
+                          <img src={`/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
                           <img loading='lazy' src={`https://api.hakush.in/gi/UI/${char?.images?.filename_icon}.webp`} alt="char" />
                           </>
                         )}
@@ -257,7 +240,7 @@ function App() {
                         <CiCircleMinus />
                       </button>
                       <div className='flex gap-1 items-center'>
-                        <img src="/src/assets/abyss_star.png" className='w-5 h-5 lg:w-7 lg:h-7' />
+                        <img src="/assets/abyss_star.png" className='w-5 h-5 lg:w-7 lg:h-7' />
                         <span>
                           {item?.star}/9
                         </span>
@@ -300,7 +283,7 @@ function App() {
                       </span>
                       <div className='flex gap-1 text-sm md:text-base'>
                         <span>{item?.groups?.length} groups</span>
-                        <img src="/src/assets/abyss_star.png" className='w-5 h-5 md:w-7 md:h-7' />
+                        <img src="/assets/abyss_star.png" className='w-5 h-5 md:w-7 md:h-7' />
                         <span>
                           {item?.groups?.reduce((sum: number, item: any) => sum + item?.star, 0)}/{item?.groups?.length * 9}
                         </span>
@@ -344,7 +327,6 @@ function App() {
           </ul>
           <p className='text-sm sm:text-base'>Credits:</p>
           <ul className='list-disc pl-5 mb-5 text-sm sm:text-base'>
-            <li>Character data: <a className='text-blue-400 underline underline-offset-2' href="https://github.com/theBowja/genshin-db-api">theBowja/genshin-db-api</a></li>
             <li>Character images: <a className='text-blue-400 underline underline-offset-2' href="https://gi18.hakush.in/">Hakush.in</a></li>
           </ul>
           <p className='text-gray-400 text-sm sm:text-base'>

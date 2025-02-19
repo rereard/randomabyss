@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Firebase files (local settings, cache, hosting deploy cache)
+firebase-debug.log
+.firebase/
