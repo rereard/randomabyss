@@ -126,6 +126,10 @@ function App() {
 
   return (
     <div className="text-slate-100 bg-slate-800 p-4 sm:p-6 md:p-8 rounded-xl">
+      <title>Spiral Abyss Randomizer</title>
+      <meta name="description" content="Genshin Impact Spiral Abyss party randomizer website" />
+      <meta name="keywords" content="Genshin, Genshin Impact, Spiral Abyss, Randomizer, Spiral Abyss Randomizer, random spiral abyss, 原神, 深境螺旋, ルーレット螺旋螺旋" />
+      <meta name="robots" content="index, follow" />
       <h1 className='mb-8 text-lg sm:text-xl md:text-3xl font-bold'>Spiral Abyss Party Randomizer</h1>
       <ul className='flex flex-row mb-6'>
         <li onClick={() => {setNavType(1)}} className={`flex-1 text-center ${navType === 1 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2 cursor-pointer`}>Randomize</li>
