@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://randomizer-abyss.web.app/sitemap.xml
