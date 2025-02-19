@@ -125,19 +125,19 @@ function App() {
   };
 
   return (
-    <div className="text-slate-100 bg-slate-800 p-8 rounded-xl">
-      <h1 className='mb-8 text-3xl font-bold'>Spiral Abyss Party Randomizer</h1>
+    <div className="text-slate-100 bg-slate-800 p-4 sm:p-6 md:p-8 rounded-xl">
+      <h1 className='mb-8 text-lg sm:text-xl md:text-3xl font-bold'>Spiral Abyss Party Randomizer</h1>
       <ul className='flex flex-row mb-6'>
-        <li onClick={() => {setNavType(1)}} className={`flex-1 text-center ${navType === 1 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} py-2 cursor-pointer`}>Randomize</li>
-        <li onClick={() => {setNavType(2)}} className={`flex-1 text-center ${navType === 2 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 '}  py-2 cursor-pointer font-normal underline underline-offset-4`}>Saved Result</li>
-        <li onClick={() => {setNavType(3)}} className={`flex-1 text-center ${navType === 3 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'}  py-2 cursor-pointer`}>About</li>
+        <li onClick={() => {setNavType(1)}} className={`flex-1 text-center ${navType === 1 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2 cursor-pointer`}>Randomize</li>
+        <li onClick={() => {setNavType(2)}} className={`flex-1 text-center ${navType === 2 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2 cursor-pointer`}>Saved Result</li>
+        <li onClick={() => {setNavType(3)}} className={`flex-1 text-center ${navType === 3 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2 cursor-pointer`}>About</li>
       </ul>
       {navType === 1 ? (
         <>
           {!loading && (
-            <div className='flex justify-between'>
-              <span className='mb-2 font-semibold text-lg'>Click to exclude/include characters</span>
-              <label className="flex items-center justify-center w-fit cursor-pointer space-x-1">
+            <div className='flex flex-col md:flex-row justify-between'>
+              <span className='mb-1 md:mb-2 font-semibold text-sm sm:text-base md:text-lg'>Click to exclude/include characters</span>
+              <label className="flex mb-2 md:mb-0 text-xs sm:text-sm md:text-base items-center justify-center w-fit cursor-pointer md:space-x-1">
                 <input
                   type="checkbox"
                   checked={isTravEleIncluded}
@@ -170,7 +170,7 @@ function App() {
                   }}
                   className="hidden"
                 />
-                <div className={`w-5 h-5 rounded-full border-2 border-gray-600 flex items-center justify-center ${isTravEleIncluded ? "bg-blue-500" : "bg-white"}`}>
+                <div className={`w-4 h-4 md:w-5 md:h-5 rounded-full border-2 border-gray-600 flex items-center justify-center ${isTravEleIncluded ? "bg-blue-500" : "bg-white"}`}>
                   {isTravEleIncluded && <div className="w-2 h-2 bg-white rounded-full"></div>}
                 </div>
                 <span>Include traveler's elements</span>
@@ -184,7 +184,7 @@ function App() {
           ) : (
             <div className='flex flex-wrap gap-2 items-center justify-center'>
               {listChar?.map((char, index) => (
-                <div key={index} className={`w-20 h-20 block ${char?.rarity === 4 ? 'bg-[#9c75b7]' : 'bg-[#b27330]'} rounded cursor-pointer ${!char?.active ? 'grayscale' : 'grayscale-0' } relative`} onClick={() => toggleActive(char?.id)} >
+                <div key={index} className={`w-16 h-16 md:w-20 md:h-20 block ${char?.rarity === 4 ? 'bg-[#9c75b7]' : 'bg-[#b27330]'} rounded cursor-pointer ${!char?.active ? 'grayscale' : 'grayscale-0' } relative`} onClick={() => toggleActive(char?.id)} >
                   {char?.name === "Traveler" ? (
                     <>
                     {char?.elementText && 
@@ -204,7 +204,7 @@ function App() {
           )}
           {!loading && (
             <div className='mt-7 flex justify-center'>
-              <button className='px-7 py-2 bg-blue-600 rounded-xl text-lg font-semibold' onClick={() => {
+              <button className='px-5 md:px-7 py-1 md:py-2 bg-blue-600 rounded-xl text-base md:text-lg font-semibold' onClick={() => {
                 setRandomResult(groupActiveItems(listChar))
                 setTimeout(() => {
                   resultRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -217,14 +217,14 @@ function App() {
           )}
           {randomResult.length > 0 && (
             <div className='mt-10'>
-              <h1 className='text-xl font-bold mb-2' ref={resultRef}>Results:</h1>
+              <h1 className='text-base sm:text-lg md:text-xl font-bold mb-2' ref={resultRef}>Results:</h1>
               {randomResult.map((item, index) => (
-                <div className='flex flex-col' key={index}>
-                  <span className='font-bold mb-2'>Group {index+1}:</span>
+                <div className='flex flex-col mb-5' key={index}>
+                  <span className='font-bold mb-2 text-sm md:text-base'>Group {index+1}:</span>
                   <div className='flex flex-row'>
-                    <div className='flex flex-wrap gap-2'>
+                    <div className='flex flex-1 md:flex-initial flex-wrap gap-2'>
                       {item?.group?.map((char: Record<string, any>, index: number) => (
-                        <div key={index} className={`w-20 h-20 mb-5 block ${char?.rarity === 4 ? 'bg-[#9c75b7]' : 'bg-[#b27330]'} rounded relative`}>
+                        <div key={index} className={`w-16 h-16 lg:w-20 lg:h-20 block ${char?.rarity === 4 ? 'bg-[#9c75b7]' : 'bg-[#b27330]'} rounded relative`}>
                         {char?.name === "Traveler" ? (
                           <>
                           {char?.elementText && 
@@ -241,7 +241,7 @@ function App() {
                       </div>
                       ))}
                     </div>
-                    <div className='flex gap-1 justify-center items-center h-20 ml-3'>
+                    <div className='flex flex-col md:flex-row gap-1 justify-center items-center md:ml-3'>
                       <button className={`text-xl ${item?.star === 0 && 'invisible'}`} onClick={() => {
                         const savedGroups: Record<string, any>[] = JSON.parse(localStorage.getItem('savedGroups')!)
                         const result = randomResult.map((g, i) => i === index ? {...g, star: Math.max(0, g.star - 1)} : g)
@@ -252,8 +252,8 @@ function App() {
                       }}>
                         <CiCircleMinus />
                       </button>
-                      <div className='flex gap-1'>
-                        <img src="/src/assets/abyss_star.png" className='w-7 h-7' />
+                      <div className='flex gap-1 items-center'>
+                        <img src="/src/assets/abyss_star.png" className='w-5 h-5 lg:w-7 lg:h-7' />
                         <span>
                           {item?.star}/9
                         </span>
@@ -290,13 +290,13 @@ function App() {
                       <FaTrashAlt />
                     </button>
                     <div>
-                      <h1 className='text-lg font-bold'>{item?.name}</h1>
-                      <span className='italic text-gray-400'>
+                      <h1 className='text-base md:text-lg font-bold'>{item?.name}</h1>
+                      <span className='italic text-sm md:text-base text-gray-400'>
                         {formatDate(item?.date)}
                       </span>
-                      <div className='flex gap-1'>
+                      <div className='flex gap-1 text-sm md:text-base'>
                         <span>{item?.groups?.length} groups</span>
-                        <img src="/src/assets/abyss_star.png" className='w-7 h-7' />
+                        <img src="/src/assets/abyss_star.png" className='w-5 h-5 md:w-7 md:h-7' />
                         <span>
                           {item?.groups?.reduce((sum: number, item: any) => sum + item?.star, 0)}/{item?.groups?.length * 9}
                         </span>
@@ -304,7 +304,7 @@ function App() {
                     </div>
                   </div>
                   <div>
-                    <button className='border text-xl p-2 rounded-full' onClick={() => {
+                    <button className='border text-base md:text-xl p-2 rounded-full' onClick={() => {
                       setRandomResult(item?.groups)
                       setStorageId(item?.id)
                       setNavType(1)
@@ -326,11 +326,11 @@ function App() {
         </>
       ) : (
         <div>
-          <h1 className='text-lg font-bold mb-3'>Welcome to Spiral Abyss Party Randomizer!</h1>
-          <p>
+          <h1 className='text-base sm:text-lg font-bold mb-3'>Welcome to Spiral Abyss Party Randomizer!</h1>
+          <p className='text-sm sm:text-base'>
             Inspired by <a className='text-blue-400 underline underline-offset-2' href="https://www.youtube.com/@mosurameso">Mosurameso (モスラメソ)</a> <a className='text-blue-400 underline underline-offset-2' href="https://www.youtube.com/playlist?list=PLxn0k-vF3UAPQHVKowc_7XW9dYU5te6Ij">all characters roulette Spiral Abyss streams</a>, include character that you have/build to randomly group it.
           </p>
-          <ul className='list-disc pl-5 mb-5'>
+          <ul className='list-disc pl-5 text-sm sm:text-base mb-3'>
             <li>Each group will have 8 random characters</li>
             <li>Use that 8 characters to form a party for first half and second half of floor</li>
             <li>Record the group's star result</li>
@@ -338,12 +338,12 @@ function App() {
             <li>If Traveler's element not included, you can freely choose the Traveler's element</li>
             <li>Randomized groups results are auto-saved in your local storage, you can check the result's run in Saved Result tab</li>
           </ul>
-          <p>Credits:</p>
-          <ul className='list-disc pl-5 mb-5'>
+          <p className='text-sm sm:text-base'>Credits:</p>
+          <ul className='list-disc pl-5 mb-5 text-sm sm:text-base'>
             <li>Character data: <a className='text-blue-400 underline underline-offset-2' href="https://github.com/theBowja/genshin-db-api">theBowja/genshin-db-api</a></li>
             <li>Character images: <a className='text-blue-400 underline underline-offset-2' href="https://gi18.hakush.in/">Hakush.in</a></li>
           </ul>
-          <p className='text-gray-400'>
+          <p className='text-gray-400 text-sm sm:text-base'>
             This website is not affiliated with HoYoverse. Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.
           </p>
         </div>
