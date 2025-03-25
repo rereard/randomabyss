@@ -110,21 +110,7 @@ function App() {
 
   return (
     <div className="text-slate-100 bg-slate-800 p-4 sm:p-6 md:p-8 rounded-xl">
-      <title>Spiral Abyss Randomizer</title>
-      <meta name="description" content="Genshin Impact Spiral Abyss party randomizer website" />
-      <meta name="keywords" content="Genshin, Genshin Impact, Spiral Abyss, Randomizer, Spiral Abyss Randomizer, random spiral abyss, 原神, 深境螺旋, ルーレット螺旋螺旋" />
-      <meta name="robots" content="index, follow" />
-      {/* Open Graph (Facebook) */}
-      <meta property="og:title" content="Spiral Abyss Randomizer" />
-      <meta property="og:description" content="Genshin Impact Spiral Abyss party randomizer website" />
-      <meta property="og:url" content="https://randomizer-abyss.web.app/" />
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="spiral_abyss_party_randomizer" />
-      <meta name="twitter:title" content="Spiral Abyss Randomizer" />
-      <meta name="twitter:description" content="Genshin Impact Spiral Abyss party randomizer website" />
       <h1 className='mb-8 text-lg sm:text-xl md:text-3xl font-bold'>Spiral Abyss Party Randomizer</h1>
-      {/* Canonical URL */}
-      <link rel="canonical" href="https://randomizer-abyss.web.app/" />
       {/* navbar type 1 = main, 2 = saved, 3 = about */}
       <nav className='flex flex-row mb-6'>
         <button onClick={() => {setNavType(1)}} className={`flex-1 text-center ${navType === 1 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>Randomize</button>
