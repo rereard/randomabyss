@@ -1820,6 +1820,38 @@
       "version": "5.5"
   },
   {
+      "id": 10000112,
+      "name": "Escoffier",
+      "rarity": 5,
+      "elementText": "Cryo",
+      "images": {
+          "filename_icon": "UI_AvatarIcon_Escoffier",
+          "filename_iconCard": "UI_AvatarIcon_Escoffier_Card",
+          "filename_sideIcon": "UI_AvatarIcon_Side_Escoffier",
+          "filename_gachaSplash": "UI_Gacha_AvatarImg_Escoffier",
+          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Escoffier",
+          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Escoffier.png",
+          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Escoffier.png"
+      },
+      "version": "5.6"
+  },
+  {
+      "id": 10000113,
+      "name": "Ifa",
+      "rarity": 4,
+      "elementText": "Anemo",
+      "images": {
+          "filename_icon": "UI_AvatarIcon_Ifa",
+          "filename_iconCard": "UI_AvatarIcon_Ifa_Card",
+          "filename_sideIcon": "UI_AvatarIcon_Side_Ifa",
+          "filename_gachaSplash": "UI_Gacha_AvatarImg_Ifa",
+          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Ifa",
+          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ifa.png",
+          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Ifa.png"
+      },
+      "version": "5.6"
+  },
+  {
       "id": 10000064,
       "name": "Yun Jin",
       "rarity": 4,
