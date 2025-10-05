@@ -1932,6 +1932,22 @@
       "version": "6.0"
   },
   {
+      "id": 10000119,
+      "name": "Flins",
+      "rarity": 5,
+      "elementText": "Electro",
+      "images": {
+          "filename_icon": "UI_AvatarIcon_Flins",
+          "filename_iconCard": "UI_AvatarIcon_Flins_Card",
+          "filename_sideIcon": "UI_AvatarIcon_Side_Flins",
+          "filename_gachaSplash": "UI_Gacha_AvatarImg_Flins",
+          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Flins",
+          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Flins.png",
+          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Flins.png"
+      },
+      "version": "6.0"
+  },
+  {
       "id": 10000064,
       "name": "Yun Jin",
       "rarity": 4,
