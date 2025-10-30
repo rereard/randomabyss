@@ -1947,6 +1947,22 @@
       },
       "version": "6.0"
   },
+    {
+      "id": 10000120,
+      "name": "Nefer",
+      "rarity": 5,
+      "elementText": "Dendro",
+      "images": {
+          "filename_icon": "UI_AvatarIcon_Nefer",
+          "filename_iconCard": "UI_AvatarIcon_Nefer_Card",
+          "filename_sideIcon": "UI_AvatarIcon_Side_Nefer",
+          "filename_gachaSplash": "UI_Gacha_AvatarImg_Nefer",
+          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Nefer",
+          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nefer.png",
+          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Nefer.png"
+      },
+      "version": "6.1"
+  },
   {
       "id": 10000064,
       "name": "Yun Jin",
