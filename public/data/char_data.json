@@ -1947,21 +1947,53 @@
       },
       "version": "6.0"
   },
-    {
-      "id": 10000120,
-      "name": "Nefer",
-      "rarity": 5,
-      "elementText": "Dendro",
-      "images": {
-          "filename_icon": "UI_AvatarIcon_Nefer",
-          "filename_iconCard": "UI_AvatarIcon_Nefer_Card",
-          "filename_sideIcon": "UI_AvatarIcon_Side_Nefer",
-          "filename_gachaSplash": "UI_Gacha_AvatarImg_Nefer",
-          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Nefer",
-          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nefer.png",
-          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Nefer.png"
-      },
-      "version": "6.1"
+  {
+    "id": 10000120,
+    "name": "Nefer",
+    "rarity": 5,
+    "elementText": "Dendro",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Nefer",
+        "filename_iconCard": "UI_AvatarIcon_Nefer_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Nefer",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Nefer",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Nefer",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nefer.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Nefer.png"
+    },
+    "version": "6.1"
+  },
+  {
+    "id": 10000121,
+    "name": "Durin",
+    "rarity": 5,
+    "elementText": "Pyro",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Durin",
+        "filename_iconCard": "UI_AvatarIcon_Durin_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Durin",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Durin",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Durin",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Durin.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Durin.png"
+    },
+    "version": "6.2"
+  },
+  {
+    "id": 10000122,
+    "name": "Jahoda",
+    "rarity": 4,
+    "elementText": "Anemo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Jahoda",
+        "filename_iconCard": "UI_AvatarIcon_Jahoda_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Jahoda",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Jahoda",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Jahoda",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Jahoda.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Jahoda.png"
+    },
+    "version": "6.2"
   },
   {
       "id": 10000064,
