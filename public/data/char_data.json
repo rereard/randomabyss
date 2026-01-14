@@ -1996,6 +1996,22 @@
     "version": "6.2"
   },
   {
+    "id": 10000123,
+    "name": "Columbina",
+    "rarity": 5,
+    "elementText": "Hydro",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Columbina",
+        "filename_iconCard": "UI_AvatarIcon_Columbina_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Columbina",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Columbina",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Columbina",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Columbina.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Columbina.png"
+    },
+    "version": "6.3"
+  },
+  {
       "id": 10000064,
       "name": "Yun Jin",
       "rarity": 4,
