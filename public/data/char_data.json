@@ -2012,6 +2012,38 @@
     "version": "6.3"
   },
   {
+    "id": 10000124,
+    "name": "Zibai",
+    "rarity": 5,
+    "elementText": "Geo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Zibai",
+        "filename_iconCard": "UI_AvatarIcon_Zibai_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Zibai",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Zibai",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Zibai",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Zibai.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Zibai.png"
+    },
+    "version": "6.3"
+  },
+  {
+    "id": 10000125,
+    "name": "Illuga",
+    "rarity": 4,
+    "elementText": "Geo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Illuga",
+        "filename_iconCard": "UI_AvatarIcon_Illuga_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Illuga",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Illuga",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Illuga",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Illuga.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Illuga.png"
+    },
+    "version": "6.3"
+  },
+  {
       "id": 10000064,
       "name": "Yun Jin",
       "rarity": 4,
