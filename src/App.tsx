@@ -178,7 +178,7 @@ function App() {
                   ) : (
                     <>
                     <img src={`/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
-                    <img loading='lazy' src={`https://api.hakush.in/gi/UI/${char?.images?.filename_icon}.webp`} alt="char" />
+                    <img loading='lazy' src={`https://gi.yatta.moe/assets/UI/${char?.images?.filename_icon}.png`} alt="char" />
                     </>
                   )}
                 </div>
@@ -218,7 +218,7 @@ function App() {
                         ) : (
                           <>
                           <img src={`/assets/Element_${char?.elementText}.webp`} alt="element" className='absolute z-10 top-0 right-0 w-5' />
-                          <img loading='lazy' src={`https://api.hakush.in/gi/UI/${char?.images?.filename_icon}.webp`} alt="char" />
+                          <img loading='lazy' src={`https://gi.yatta.moe/assets/UI/${char?.images?.filename_icon}.png`} alt="char" />
                           </>
                         )}
                       </div>
@@ -323,7 +323,7 @@ function App() {
           </ul>
           <p className='text-sm sm:text-base'>Credits:</p>
           <ul className='list-disc pl-5 mb-5 text-sm sm:text-base'>
-            <li>Character images: <a className='text-blue-400 underline underline-offset-2' href="https://gi18.hakush.in/">Hakush.in</a></li>
+            <li>Character images: <a className='text-blue-400 underline underline-offset-2' href="https://gi.yatta.moe//">Project Amber</a></li>
           </ul>
           <p className='text-gray-400 text-sm sm:text-base'>
             This website is not affiliated with HoYoverse. Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.
