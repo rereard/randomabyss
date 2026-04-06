@@ -3,6 +3,8 @@ import './App.css'
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { FaChevronRight, FaTrashAlt } from "react-icons/fa";
 import EndlessMode from './EndlessMode';
+import { getAllEndlessRuns, deleteEndlessRun } from './endlessStorage';
+import { EndlessRun } from './endlessutils';
 
 function App() {
   const [listChar, setListChar] = useState<Record<string, any>[]>([])
@@ -12,6 +14,15 @@ function App() {
   const [navType, setNavType] = useState<number>(1)
   const [storageId, setStorageId] = useState<number>(0)
   const [localSavedGroups, setLocalSavedGroups] = useState<Record<string, any>[]>(JSON.parse(localStorage.getItem('savedGroups')!))
+  const [endlessSavedRuns, setEndlessSavedRuns] = useState<EndlessRun[]>([]);
+  const [viewingEndlessRun, setViewingEndlessRun] = useState<EndlessRun | null>(null);
+
+  useEffect(() => {
+    if (navType === 3) {
+      setEndlessSavedRuns(getAllEndlessRuns().filter(r => r.status === 'given-up').reverse());
+    }
+  }, [navType]);
+
   const resultRef = useRef<HTMLDivElement>(null);
 
   // Assigning char data to state
@@ -265,56 +276,98 @@ function App() {
           listChar={listChar}
           isTravEleIncluded={isTravEleIncluded}
           loading={loading}
+          viewingRun={viewingEndlessRun}
+          setViewingRun={setViewingEndlessRun}
         />
       ) : navType === 3 ? (
-        <>
-          {localSavedGroups && localSavedGroups.length !== 0 ? (
-            <div>
-              {localSavedGroups?.map((item, index) => (
-                <div key={index} className='flex justify-between items-center border-t-2 py-3 border-gray-700'>
-                  <div className='flex gap-4'>
-                    <button className='text-red-700' onClick={() => {
-                      const saved = localSavedGroups.filter(i => i.id !== item.id)
-                      setLocalSavedGroups(saved)
-                      localStorage.setItem("savedGroups", JSON.stringify(saved))
-                    }}>
-                      <FaTrashAlt />
-                    </button>
-                    <div>
-                      <h1 className='text-base md:text-lg font-bold'>{item?.name}</h1>
-                      <span className='italic text-sm md:text-base text-gray-400'>
-                        {formatDate(item?.date)}
-                      </span>
-                      <div className='flex gap-1 text-sm md:text-base'>
-                        <span>{item?.groups?.length} groups</span>
-                        <img src="/assets/abyss_star.png" className='w-5 h-5 md:w-7 md:h-7' />
-                        <span>
-                          {item?.groups?.reduce((sum: number, item: any) => sum + item?.star, 0)}/{item?.groups?.length * 9}
+        <div className="flex flex-col gap-10">
+          
+          {/* Normal Mode Section */}
+          <section>
+            <h2 className='text-lg md:text-2xl font-bold mb-4 border-b border-gray-600 pb-2'>Normal Mode</h2>
+            {localSavedGroups && localSavedGroups.length !== 0 ? (
+              <div>
+                {localSavedGroups?.map((item, index) => (
+                  <div key={index} className='flex justify-between items-center border-b-2 py-3 border-gray-700'>
+                    <div className='flex gap-4'>
+                      <button className='text-red-700' onClick={() => {
+                        const saved = localSavedGroups.filter(i => i.id !== item.id)
+                        setLocalSavedGroups(saved)
+                        localStorage.setItem("savedGroups", JSON.stringify(saved))
+                      }}>
+                        <FaTrashAlt />
+                      </button>
+                      <div>
+                        <h1 className='text-base md:text-lg font-bold'>{item?.name}</h1>
+                        <span className='italic text-sm md:text-base text-gray-400'>
+                          {formatDate(item?.date)}
                         </span>
+                        <div className='flex gap-1 text-sm md:text-base'>
+                          <span>{item?.groups?.length} groups</span>
+                          <img src="/assets/abyss_star.png" className='w-5 h-5 md:w-7 md:h-7' />
+                          <span>
+                            {item?.groups?.reduce((sum: number, item: any) => sum + item?.star, 0)}/{item?.groups?.length * 9}
+                          </span>
+                        </div>
                       </div>
                     </div>
+                    <div>
+                      <button className='border text-base md:text-xl p-2 rounded-full' onClick={() => {
+                        setRandomResult(item?.groups)
+                        setStorageId(item?.id)
+                        setNavType(1)
+                        setTimeout(() => {
+                          resultRef.current?.scrollIntoView({ behavior: "smooth" });
+                        }, 100);
+                      }}>
+                        <FaChevronRight />
+                      </button>
+                    </div>
                   </div>
-                  <div>
+                ))}
+              </div>
+            ) : (
+               <div className='p-2 font-bold text-gray-500 italic'>No Saved Result~</div>
+            )}
+          </section>
+          {/* Endless Mode Section */}
+          <section>
+            <h2 className='text-lg md:text-2xl font-bold mb-4 border-b border-gray-600 pb-2'>Endless Mode</h2>
+            {endlessSavedRuns && endlessSavedRuns.length !== 0 ? (
+              <div>
+                {endlessSavedRuns.map(run => (
+                  <div key={run.id} className='flex justify-between items-center border-b-2 py-3 border-gray-700'>
+                    <div className='flex gap-4'>
+                      <button className='text-red-700' onClick={() => {
+                         if (!window.confirm("Delete this run?")) return;
+                         deleteEndlessRun(run.id);
+                         setEndlessSavedRuns(getAllEndlessRuns().filter(r => r.status === 'given-up').reverse());
+                      }}>
+                        <FaTrashAlt />
+                      </button>
+                      <div>
+                        <h4 className='text-base md:text-lg font-bold'>{run.name}</h4>
+                        <span className='italic text-sm md:text-base text-gray-400'>{formatDate(run.startDate)}</span>
+                        <div className='text-sm md:text-base text-gray-300'>
+                          Floors cleared: {run.floorHistory.filter(f => !f.isFailed).length}
+                        </div>
+                      </div>
+                    </div>
                     <button className='border text-base md:text-xl p-2 rounded-full' onClick={() => {
-                      setRandomResult(item?.groups)
-                      setStorageId(item?.id)
-                      setNavType(1)
-                      setTimeout(() => {
-                        resultRef.current?.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
+                        setViewingEndlessRun(run);
+                        setNavType(2);
+                        setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100);
                     }}>
                       <FaChevronRight />
                     </button>
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className='p-2 text-center font-bold text-gray-500 text-lg italic'>
-              No Saved Result~
-            </div>
-          )}
-        </>
+                ))}
+              </div>
+            ) : (
+               <div className='p-2 font-bold text-gray-500 italic'>No Saved Result~</div>
+            )}
+          </section>
+        </div>
       ) : (
         <div>
           <h1 className='text-base sm:text-lg font-bold mb-3'>Welcome to Spiral Abyss Party Randomizer!</h1>
