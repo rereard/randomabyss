@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { FaChevronRight, FaTrashAlt } from "react-icons/fa";
+import EndlessMode from './EndlessMode';
 
 function App() {
   const [listChar, setListChar] = useState<Record<string, any>[]>([])
@@ -114,8 +115,9 @@ function App() {
       {/* navbar type 1 = main, 2 = saved, 3 = about */}
       <nav className='flex flex-row mb-6'>
         <button onClick={() => {setNavType(1)}} className={`flex-1 text-center ${navType === 1 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>Randomize</button>
-        <button onClick={() => {setNavType(2)}} className={`flex-1 text-center ${navType === 2 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>Saved Result</button>
-        <button onClick={() => {setNavType(3)}} className={`flex-1 text-center ${navType === 3 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>About</button>
+        <button onClick={() => {setNavType(2)}} className={`flex-1 text-center ${navType === 2 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>Endless</button>
+        <button onClick={() => {setNavType(3)}} className={`flex-1 text-center ${navType === 3 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>Saved Result</button>
+        <button onClick={() => {setNavType(4)}} className={`flex-1 text-center ${navType === 4 ? 'border-t-2 border-l-2 border-r-2 font-extrabold' : 'border-b-2 font-normal underline underline-offset-4'} text-xs sm:text-sm md:text-base py-2`}>About</button>
       </nav>
       {navType === 1 ? (
         <>
@@ -259,6 +261,12 @@ function App() {
           )}
         </>
       ) : navType === 2 ? (
+        <EndlessMode
+          listChar={listChar}
+          isTravEleIncluded={isTravEleIncluded}
+          loading={loading}
+        />
+      ) : navType === 3 ? (
         <>
           {localSavedGroups && localSavedGroups.length !== 0 ? (
             <div>

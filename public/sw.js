@@ -10,7 +10,7 @@ self.addEventListener("fetch", (event) => {
   const requestUrl = new URL(event.request.url);
 
   // Only cache images that match this path
-  if (requestUrl.href.includes("https://api.hakush.in/gi/UI/")) {
+  if (requestUrl.href.includes("https://gi.yatta.moe/assets/UI/")) {
     event.respondWith(
       caches.open("image-cache-v1").then((cache) => {
         return cache.match(event.request).then((cachedResponse) => {
