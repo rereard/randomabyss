@@ -4,7 +4,7 @@ import {
   formGroup, getAvailablePool, rerollCharacter
 } from './endlessutils';
 import {
-  getAllEndlessRuns, getActiveRun, saveEndlessRun, getNextEndlessId
+  getActiveRun, saveEndlessRun, getNextEndlessId
 } from './endlessStorage';
 import { FaCheck } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
@@ -20,13 +20,10 @@ interface EndlessModePr {
 
 export default function EndlessMode({ listChar, isTravEleIncluded, loading, viewingRun, setViewingRun }: EndlessModePr) {
   const [activeRun, setActiveRun] = useState<EndlessRun | null>(null);
-  const [allRuns, setAllRuns] = useState<EndlessRun[]>([]);
   // const [viewingRun, setViewingRun] = useState<EndlessRun | null>(null);
   const [activeElementTab, setActiveElementTab] = useState<string | null>(null);
 
   useEffect(() => {
-    const runs = getAllEndlessRuns();
-    setAllRuns(runs);
     const active = getActiveRun();
     if (active) setActiveRun(active);
   }, []);
@@ -61,7 +58,6 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
     };
     saveEndlessRun(newRun);
     setActiveRun(newRun);
-    setAllRuns(getAllEndlessRuns());
   };
 
   const handleSelectOpener = (character: Record<string, any>) => {
@@ -156,14 +152,7 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
     }
     saveEndlessRun(updatedRun);
     setActiveRun(null);
-    setAllRuns(getAllEndlessRuns());
   };
-
-  // const handleDeleteRun = (id: number) => {
-  //   deleteEndlessRun(id);
-  //   setAllRuns(getAllEndlessRuns());
-  //   if (viewingRun?.id === id) setViewingRun(null);
-  // };
 
   // ═══════════════════ CHAR CARD HELPER ═══════════════════
 
@@ -283,7 +272,7 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
   );
 
   const renderClearedFloorsAndStats = (run: EndlessRun) => {
-    if (run.floorHistory.length === 0) return null;
+    // if (run.floorHistory.length === 0) return null;
     const stats = calculateRunStats(run);
     
     return (
@@ -320,7 +309,7 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
       </p>
       <div className='mb-4'>
         <span className={`text-sm sm:text-base ${isPoolTooSmall ? 'text-red-400 font-bold' : 'text-gray-400'}`}>
-          Active characters: {activeCharCount}
+          Active characters: {activeCharCount} (Change active characters in Randomize tab)
           {isPoolTooSmall && ' — Need at least 16! Go to Randomize tab to include more.'}
         </span>
       </div>
@@ -402,79 +391,7 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
           <button className='px-5 py-1 md:py-2 bg-red-700 rounded-xl text-sm md:text-base font-semibold flex items-center gap-2' onClick={handleGiveUp}><IoClose /> Give Up</button>
         </div>
 
-        {/* cleared floor stat */}
-        <div className='mb-4 mt-8'>
-          <h3 className='text-sm sm:text-base font-bold mb-2 xl:mb-0 text-nowrap mr-4'>Cleared Floors & Stats:</h3>
-          <div className='flex flex-row gap-5'>
-            {/* Cleared Floors */}
-            <div className='flex-1'>
-              {[...activeRun!.floorHistory].reverse().map((record) => (
-                <div key={ record.floor} className='mb-3'>
-                  <span className='text-sm font-semibold'>Floor {record.floor}:</span>
-                  <span className='text-xs text-gray-400 ml-2'>(rerolls used: {record.rerollsUsed})</span>
-                  <div className='flex flex-wrap gap-1 mt-1'>
-                    {record.group.map((c, i) => (
-                      <div key={i}>{renderCharIcon(c, 'sm', undefined, i === 0 ? openerBadge('sm') : undefined)}</div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Summary Counter Row */}
-            <div className='flex-1 flex flex-wrap flex-col gap-3 text-xs md:text-sm items-center px-3 py-2'>
-              <div className='flex flex-row items-center'>
-                <div className='flex items-center gap-1 mr-2'>
-                  <div className='w-4 h-4 bg-[#9c75b7] rounded'></div> {stats.rarity[4]}
-                </div>
-                <div className='flex items-center gap-1'>
-                  <div className='w-4 h-4 bg-[#b27330] rounded'></div> {stats.rarity[5]}
-                </div>
-                <div className='w-[1px] h-4 bg-gray-600 mx-2'></div> {/* Divider */}
-                
-                {["Anemo", "Pyro", "Cryo", "Hydro", "Electro", "Geo", "Dendro"].map(el => (
-                  <div 
-                    key={el} 
-                    className={`flex items-center gap-1 cursor-pointer hover:bg-slate-700 p-1 rounded ${activeElementTab === el ? 'bg-slate-700' : ''}`}
-                    onClick={() => setActiveElementTab(activeElementTab === el ? null : el)}
-                  >
-                    <img src={`/assets/Element_${el}.webp`} className='w-5 h-5' alt={el} /> {stats.elements[el] || 0}
-                  </div>
-                ))}
-              </div>
-
-              {activeElementTab && (
-                <div className='mb-6 p-4 bg-slate-900 border border-slate-700 rounded-lg'>
-                  <div className='flex flex-wrap gap-4'>
-                    {activeChars.filter((c: any) => c.elementText === activeElementTab)
-                      .map((char: any) => {
-                        const statData = stats.chars.get(char.id);
-                        const count = statData ? statData.count : 0;
-                        return { char, count }
-                      })
-                      .sort((a, b) => b.count - a.count)
-                      .map((c, i) => (
-                        <div key={i}>
-                          {renderCharIcon(
-                            c.char,
-                            'md',
-                            undefined, // no onClick needed for stats
-                            // Custom Badge for Count
-                            <div className='absolute top-0 right-0 bg-gray-900 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center -mr-2 -mt-2 border border-gray-500 shadow z-50'>
-                              {c.count}
-                            </div>,
-                            // 5. If count is 0, pass 'true' to the isDisabled parameter!
-                            c.count === 0 
-                          )}
-                        </div>
-                      ))
-                    }
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        {renderClearedFloorsAndStats(activeRun!)}
       </div>
     );
   }
@@ -502,6 +419,8 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
           })}
         </div>
         <button className='px-5 py-2 bg-red-700 rounded-xl text-sm md:text-base font-semibold flex items-center gap-2' onClick={handleGiveUp}><IoClose /> Give Up</button>
+
+        {renderClearedFloorsAndStats(activeRun!)}
       </div>
     );
   };
@@ -514,6 +433,7 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
         Started: {formatDate(run.startDate)}{run.endDate && ` | Ended: ${formatDate(run.endDate)}`}
       </p>
       <p className='text-sm text-gray-300 mb-4'>Floors cleared: {run.floorHistory.filter(f => !f.isFailed).length}</p>
+      {renderSummaryDisplay(calculateRunStats(run), 'flex flex-wrap flex-col gap-3 text-xs md:text-sm items-start mb-6')}
       {run.floorHistory.length === 0 ? (
         <p className='text-gray-500 italic'>No floors cleared in this run.</p>
       ) : (
