@@ -1,5 +1,4 @@
-import { EndlessRun } from "./endlessUtils";
-
+import { EndlessRun } from '../types';
 
 const STORAGE_KEY = 'endlessRuns';
 
@@ -39,4 +38,3 @@ export function getNextEndlessId(): number {
   if (runs.length === 0) return 1;
   return Math.max(...runs.map(r => r.id)) + 1;
 }
-

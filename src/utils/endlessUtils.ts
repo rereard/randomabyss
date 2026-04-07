@@ -1,35 +1,4 @@
-export interface Character {
-  id: number;
-  name: string;
-  rarity: number;
-  elementText?: string;
-  images?: Record<string, string>;
-  version?: string;
-  active?: boolean;
-}
-
-export interface FloorRecord {
-  floor: number;                    // 1-indexed floor number
-  group: Character[];               // the 8 characters used this floor
-  openingCharacter: Character;      // which character was the opener
-  rerollsUsed: number;              // how many rerolls were consumed
-  isFailed?: boolean                // true if the run ended on this floor without clearing it
-}
-
-export interface EndlessRun {
-  id: number;
-  name: string;
-  startDate: number;                // Date.now() when run started
-  endDate?: number;                 // Date.now() when given up
-  status: 'picking-opener' | 'in-floor' | 'picking-carry' | 'given-up';
-  currentFloor: number;             // 1-indexed, the floor currently being attempted
-  currentGroup: Character[];        // current floor's 8 characters
-  previousFloorGroup: Character[];  // last cleared floor's 8 characters ([] for floor 1)
-  rerollsRemaining: number;
-  rerollsUsedThisFloor: number;     // rerolls consumed on the current floor
-  floorHistory: FloorRecord[];      // all cleared floors in order
-  disabledOpenerId?: number; 
-}
+import { Character } from '../types';
 
 export function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr];
@@ -41,8 +10,8 @@ export function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export function getAvailablePool(
-  activeChars: Character[],          // listChar.filter(c => c.active)
-  previousFloorGroup: Character[]    // [] for floor 1
+  activeChars: Character[],
+  previousFloorGroup: Character[]
 ): Character[] {
   const excludedIds = new Set(previousFloorGroup.map(c => c.id));
   return activeChars.filter(c => !excludedIds.has(c.id));
@@ -50,7 +19,7 @@ export function getAvailablePool(
 
 export function formGroup(
   opening: Character,
-  availablePool: Character[],       // output of getAvailablePool (opener already excluded from this)
+  availablePool: Character[],
   isTravEleIncluded: boolean
 ): Character[] {
   const group: Character[] = [opening];
@@ -58,20 +27,13 @@ export function formGroup(
   const candidates = shuffleArray(availablePool);
   for (const candidate of candidates) {
     if (group.length >= 8) break;
-    // Skip if same ID as opener (safety check)
     if (candidate.id === opening.id) continue;
-    // Traveler dedup: max 1 Traveler name per group
     if (isTravEleIncluded && usedNames.has(candidate.name)) continue;
     group.push(candidate);
     usedNames.add(candidate.name);
   }
   return group;
 }
-
-// export function getRerollLimit(currentFloor: number): number {
-//   const floorsCleared = currentFloor - 1;
-//   return 3 + Math.floor(floorsCleared / 5);
-// }
 
 export function getRerollPool(
   activeChars: Character[],
