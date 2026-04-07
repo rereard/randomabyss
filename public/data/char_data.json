@@ -2060,6 +2060,22 @@
     "version": "6.4"
   },
   {
+    "id": 10000127,
+    "name": "Linnea",
+    "rarity": 5,
+    "elementText": "Geo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Linnea",
+        "filename_iconCard": "UI_AvatarIcon_Linnea_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Linnea",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Linnea",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Linnea",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Linnea.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Linnea.png"
+    },
+    "version": "6.5"
+  },
+  {
       "id": 10000064,
       "name": "Yun Jin",
       "rarity": 4,
