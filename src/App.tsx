@@ -220,10 +220,6 @@ function App() {
             <li>Then randomly select the remaining seven characters again excluding the characters from the group before</li>
             <li>At the start of the challenge, you gain 3 character rerolls and recover 1 reroll count for every 5 floors cleared (no limit)</li>
           </ul>
-          <p className='text-sm sm:text-base'>Credits:</p>
-          <ul className='list-disc pl-5 mb-5 text-sm sm:text-base'>
-            <li>Character images: <a className='text-blue-400 underline underline-offset-2' href="https://gi.yatta.moe//">Project Amber</a></li>
-          </ul>
           <p className='text-gray-400 text-sm sm:text-base'>
             This website is not affiliated with HoYoverse. Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.
           </p>

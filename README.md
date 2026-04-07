@@ -31,10 +31,6 @@ Also inspired by [Mosurameso's Endless Spiral Abyss streams](https://www.youtube
 - Vite
 - Tailwind CSS
 
-## Credits
-
-- Character images: [Project Amber](https://gi.yatta.moe/)
-
 ## How to Run
 
 ```
