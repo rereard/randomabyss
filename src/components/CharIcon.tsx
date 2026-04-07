@@ -8,8 +8,8 @@ interface CharIconProps {
   isDisabled?: boolean;
 }
 
-const TRAVELER_IMG = "https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png";
-const CHAR_IMG_BASE = "https://gi.yatta.moe/assets/UI";
+// const TRAVELER_IMG = "https://static.wikia.nocookie.net/gensin-impact/images/5/59/Traveler_Icon.png";
+const CHAR_IMG_BASE = "/assets/characters";
 
 export default function CharIcon({ char, size = 'md', onClick, badge, isDisabled = false }: CharIconProps) {
   const sizeClass = {
@@ -34,12 +34,12 @@ export default function CharIcon({ char, size = 'md', onClick, badge, isDisabled
           {char?.elementText && (
             <img src={`/assets/Element_${char.elementText}.webp`} alt="element" className={`absolute z-10 top-0 right-0 ${elSize}`} />
           )}
-          <img loading="lazy" src={TRAVELER_IMG} alt="char" />
+          <img loading="lazy" src="/assets/characters/Traveler_Icon.webp" alt="char" />
         </>
       ) : (
         <>
           <img src={`/assets/Element_${char?.elementText}.webp`} alt="element" className={`absolute z-10 top-0 right-0 ${elSize}`} />
-          <img loading="lazy" src={`${CHAR_IMG_BASE}/${char?.images?.filename_icon}.png`} alt="char" />
+          <img loading="lazy" src={`${CHAR_IMG_BASE}/${char?.images?.filename_icon}.webp`} alt="char" />
         </>
       )}
       {badge}
