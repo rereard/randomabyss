@@ -126,7 +126,7 @@ function App() {
             <h2 className='text-lg md:text-2xl font-bold mb-4 border-b border-gray-600 pb-2'>Normal Mode</h2>
             {savedGroups.length > 0 ? (
               <div>
-                {savedGroups.map((item, index) => (
+                {[...savedGroups].reverse().map((item, index) => (
                   <div key={index} className='flex justify-between items-center border-b-2 py-3 border-gray-700'>
                     <div className='flex gap-4'>
                       <button className='text-red-700' onClick={() => deleteResult(item.id)}>
@@ -167,7 +167,6 @@ function App() {
                   <div key={run.id} className='flex justify-between items-center border-b-2 py-3 border-gray-700'>
                     <div className='flex gap-4'>
                       <button className='text-red-700' onClick={() => {
-                        if (!window.confirm("Delete this run?")) return;
                         deleteEndlessRun(run.id);
                         setEndlessSavedRuns(getAllEndlessRuns().filter(r => r.status === 'given-up').reverse());
                       }}>
