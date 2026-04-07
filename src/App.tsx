@@ -213,6 +213,14 @@ function App() {
             <li>If Traveler's element not included, you can freely choose the Traveler's element</li>
             <li>Randomized groups results are auto-saved in your local storage, you can check the result's run in Saved Result tab</li>
           </ul>
+          <p>UPDATE! ENDLESS SPIRAL ABYSS</p>
+          <p>Also inspired by <a className='text-blue-400 underline underline-offset-2' href="https://www.youtube.com/@mosurameso">Mosurameso (モスラメソ)</a> <a className='text-blue-400 underline underline-offset-2' href="https://www.youtube.com/watch?v=357wlM7ka2c">Endless spiral abyss streams</a>, the flows are:</p>
+          <ul className='list-disc pl-5 text-sm sm:text-base mb-3'>
+            <li>Select one character from the selected characters as opening characters then randomly select the remaining seven characters</li>
+            <li>After clearing, select a characters from the seven characters other than the opening character to carry to the next group</li>
+            <li>Then randomly select the remaining seven characters again excluding the characters from the group before</li>
+            <li>At the start of the challenge, you gain 3 character rerolls and recover 1 reroll count for every 5 floors cleared (no limit)</li>
+          </ul>
           <p className='text-sm sm:text-base'>Credits:</p>
           <ul className='list-disc pl-5 mb-5 text-sm sm:text-base'>
             <li>Character images: <a className='text-blue-400 underline underline-offset-2' href="https://gi.yatta.moe//">Project Amber</a></li>

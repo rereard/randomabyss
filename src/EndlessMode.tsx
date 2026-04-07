@@ -121,7 +121,7 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
     <div>
       <h2 className='text-base sm:text-lg md:text-xl font-bold mb-4'>Endless Mode</h2>
       <p className='text-sm sm:text-base mb-4'>
-        A roguelike challenge: form groups of 8, clear floors, carry one character forward, repeat until you give up.
+        Form groups of 8, clear floors, carry one character forward, repeat until you give up.
       </p>
       <div className='mb-4'>
         <span className={`text-sm sm:text-base ${isPoolTooSmall ? 'text-red-400 font-bold' : 'text-gray-400'}`}>
