@@ -4,7 +4,7 @@ import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { FaChevronRight, FaTrashAlt } from "react-icons/fa";
 import EndlessMode from './EndlessMode';
 import { getAllEndlessRuns, deleteEndlessRun } from './endlessStorage';
-import { EndlessRun } from './endlessutils';
+import { EndlessRun } from './endlessUtils';
 
 function App() {
   const [listChar, setListChar] = useState<Record<string, any>[]>([])

@@ -1,4 +1,4 @@
-import { EndlessRun } from "./endlessutils";
+import { EndlessRun } from "./endlessUtils";
 
 
 const STORAGE_KEY = 'endlessRuns';

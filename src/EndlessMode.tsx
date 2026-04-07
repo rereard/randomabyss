@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {
   EndlessRun,
   formGroup, getAvailablePool, rerollCharacter
-} from './endlessutils';
+} from './endlessUtils';
 import {
   getActiveRun, saveEndlessRun, getNextEndlessId
 } from './endlessStorage';
@@ -232,15 +232,17 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
         </div>
         <div className='w-[1px] h-4 bg-gray-600 mx-2'></div>
         
-        {["Anemo", "Pyro", "Cryo", "Hydro", "Electro", "Geo", "Dendro"].map(el => (
-          <div 
-            key={el} 
-            className={`flex items-center gap-1 cursor-pointer hover:bg-slate-700 p-1 rounded ${activeElementTab === el ? 'bg-slate-700' : ''}`}
-            onClick={() => setActiveElementTab(activeElementTab === el ? null : el)}
-          >
-            <img src={`/assets/Element_${el}.webp`} className='w-5 h-5' alt={el} /> {stats.elements[el] || 0}
-          </div>
-        ))}
+        <div className='flex flex-row flex-wrap'>
+          {["Anemo", "Pyro", "Cryo", "Hydro", "Electro", "Geo", "Dendro"].map(el => (
+            <div 
+              key={el} 
+              className={`flex items-center gap-1 cursor-pointer hover:bg-slate-700 p-1 rounded ${activeElementTab === el ? 'bg-slate-700' : ''}`}
+              onClick={() => setActiveElementTab(activeElementTab === el ? null : el)}
+            >
+              <img src={`/assets/Element_${el}.webp`} className='w-5 h-5' alt={el} /> {stats.elements[el] || 0}
+            </div>
+          ))}
+        </div>
       </div>
       {activeElementTab && (
         <div className='mb-6 p-4 bg-slate-900 border border-slate-700 rounded-lg w-full'>
@@ -278,7 +280,7 @@ export default function EndlessMode({ listChar, isTravEleIncluded, loading, view
     return (
       <div className='mb-4 mt-8 w-full block border-t border-gray-700 pt-6'>
         <h3 className='text-sm sm:text-base font-bold mb-2 xl:mb-0 text-nowrap mr-4'>Cleared Floors & Stats:</h3>
-        <div className='flex flex-col lg:flex-row gap-5'>
+        <div className='flex flex-col-reverse lg:flex-row gap-5'>
           {/* Cleared Floors List */}
           <div className='flex-1'>
             {[...run.floorHistory].reverse().map((record) => (
