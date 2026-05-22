@@ -2076,6 +2076,38 @@
     "version": "6.5"
   },
   {
+    "id": 10000127,
+    "name": "Nicole",
+    "rarity": 5,
+    "elementText": "Pyro",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Nicole",
+        "filename_iconCard": "UI_AvatarIcon_Nicole_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Nicole",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Nicole",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Nicole",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nicole.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Nicole.png"
+    },
+    "version": "6.6"
+  },
+  {
+    "id": 10000127,
+    "name": "Prune",
+    "rarity": 4,
+    "elementText": "Anemo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Prune",
+        "filename_iconCard": "UI_AvatarIcon_Prune_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Prune",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Prune",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Prune",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Prune.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Prune.png"
+    },
+    "version": "6.6"
+  },
+  {
       "id": 10000064,
       "name": "Yun Jin",
       "rarity": 4,
