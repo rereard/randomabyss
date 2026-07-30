@@ -2125,17 +2125,17 @@
   },
   {
     "id": 10000131,
-    "name": "Sandrone",
+    "name": "MarionetteNew",
     "rarity": 5,
     "elementText": "Cryo",
     "images": {
-        "filename_icon": "UI_AvatarIcon_Sandrone",
-        "filename_iconCard": "UI_AvatarIcon_Sandrone_Card",
-        "filename_sideIcon": "UI_AvatarIcon_Side_Sandrone",
-        "filename_gachaSplash": "UI_Gacha_AvatarImg_Sandrone",
-        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Sandrone",
-        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Sandrone.png",
-        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sandrone.png"
+        "filename_icon": "UI_AvatarIcon_MarionetteNew",
+        "filename_iconCard": "UI_AvatarIcon_MarionetteNew_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_MarionetteNew",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_MarionetteNew",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_MarionetteNew",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_MarionetteNew.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_MarionetteNew.png"
     },
     "version": "6.7"
   },
