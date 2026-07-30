@@ -2076,7 +2076,7 @@
     "version": "6.5"
   },
   {
-    "id": 10000127,
+    "id": 10000128,
     "name": "Nicole",
     "rarity": 5,
     "elementText": "Pyro",
@@ -2092,7 +2092,7 @@
     "version": "6.6"
   },
   {
-    "id": 10000127,
+    "id": 10000129,
     "name": "Prune",
     "rarity": 4,
     "elementText": "Anemo",
@@ -2106,6 +2106,38 @@
         "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Prune.png"
     },
     "version": "6.6"
+  },
+  {
+    "id": 10000130,
+    "name": "Lohen",
+    "rarity": 5,
+    "elementText": "Cryo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Lohen",
+        "filename_iconCard": "UI_AvatarIcon_Lohen_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Lohen",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Lohen",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Lohen",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Lohen.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Lohen.png"
+    },
+    "version": "6.6"
+  },
+  {
+    "id": 10000131,
+    "name": "Sandrone",
+    "rarity": 5,
+    "elementText": "Cryo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Sandrone",
+        "filename_iconCard": "UI_AvatarIcon_Sandrone_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Sandrone",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Sandrone",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Sandrone",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Sandrone.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sandrone.png"
+    },
+    "version": "6.7"
   },
   {
       "id": 10000064,
