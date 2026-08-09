@@ -54,7 +54,7 @@ function groupActiveItems(listChar: any[]) {
 
 function App() {
   const { listChar, loading, isTravEleIncluded, toggleActive, toggleTravelerElements } = useCharacters();
-  const { savedGroups, storageId, setStorageId, saveNewResult, deleteResult, updateStar } = useSavedGroups();
+  const { savedGroups, storageId, setStorageId, saveNewResult, deleteResult, updateStar, reorderInGroup } = useSavedGroups();
   const [randomResult, setRandomResult] = useState<{ group: any[]; star: number }[]>([]);
   const [navType, setNavType] = useState<number>(1);
   const [endlessSavedRuns, setEndlessSavedRuns] = useState<EndlessRun[]>([]);
@@ -76,6 +76,11 @@ function App() {
 
   const handleStarChange = (index: number, delta: number) => {
     const updated = updateStar(storageId, index, delta, randomResult);
+    setRandomResult(updated);
+  };
+
+  const handleReorderGroup = (groupIndex: number, fromIndex: number, toIndex: number) => {
+    const updated = reorderInGroup(storageId, groupIndex, fromIndex, toIndex, randomResult);
     setRandomResult(updated);
   };
 
@@ -107,6 +112,7 @@ function App() {
             results={randomResult}
             resultRef={resultRef}
             onStarChange={handleStarChange}
+            onReorderGroup={handleReorderGroup}
           />
         </>
 

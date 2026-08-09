@@ -33,5 +33,17 @@ export function useSavedGroups() {
     return updated;
   };
 
-  return { savedGroups, storageId, setStorageId, saveNewResult, deleteResult, updateStar };
+  const reorderInGroup = (resultId: number, groupIndex: number, fromIndex: number, toIndex: number, currentResult: any[]) => {
+    const updated = currentResult.map((g, i) => {
+      if (i !== groupIndex) return g;
+      const newGroup = [...g.group];
+      [newGroup[fromIndex], newGroup[toIndex]] = [newGroup[toIndex], newGroup[fromIndex]];
+      return { ...g, group: newGroup };
+    });
+    const updatedGroups = savedGroups.map(g => g.id === resultId ? { ...g, groups: updated } : g);
+    persistGroups(updatedGroups);
+    return updated;
+  };
+
+  return { savedGroups, storageId, setStorageId, saveNewResult, deleteResult, updateStar, reorderInGroup };
 }
