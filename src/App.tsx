@@ -32,22 +32,23 @@ function groupActiveItems(listChar: any[]) {
     groups.push({ group: currentGroup, star: 0 });
   }
 
-  // Fill last group if under 8
-  const lastGroupIndex = groups.length - 1;
-  if (groups[lastGroupIndex].group.length < 8) {
-    const remainder = groups[lastGroupIndex].group;
-    const needed = 8 - remainder.length;
-    let usedNames = new Set(remainder.map((item: any) => item.name));
-    let extraItems: any[] = [];
-    for (let item of [...activeItems].sort(() => Math.random() - 0.5)) {
-      if (!usedNames.has(item.name)) {
-        usedNames.add(item.name);
-        extraItems.push(item);
-        if (extraItems.length === needed) break;
+    // Fill last group if under 8
+    const lastGroupIndex = groups.length - 1;
+    if (groups[lastGroupIndex].group.length < 8) {
+      const remainder = groups[lastGroupIndex].group;
+      const needed = 8 - remainder.length;
+      let usedNames = new Set(remainder.map((item: any) => item.name));
+      let extraItems: any[] = [];
+      for (let item of activeItems) {
+        if (!usedNames.has(item.name)) {
+          usedNames.add(item.name);
+          extraItems.push(item);
+          if (extraItems.length === needed) break;
+        }
       }
+      const shuffledExtras = [...extraItems].sort(() => Math.random() - 0.5);
+      groups[lastGroupIndex].group = [...remainder, ...shuffledExtras.map(item => ({ ...item, isFill: true }))];
     }
-    groups[lastGroupIndex].group = [...remainder, ...extraItems];
-  }
 
   return groups;
 }

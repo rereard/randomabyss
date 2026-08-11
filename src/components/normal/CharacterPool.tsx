@@ -60,13 +60,16 @@ export default function CharacterPool({
       )}
 
       {!loading && (
-        <div className='mt-7 flex justify-center'>
+        <div className='mt-7 flex flex-col items-center gap-2'>
           <button
             className='px-5 md:px-7 py-1 md:py-2 bg-blue-600 rounded-xl text-base md:text-lg font-semibold'
             onClick={onRandomize}
           >
             Randomize!
           </button>
+          <span className='text-sm text-gray-400'>
+            {numActive}/{listChar.length} characters selected • {Math.ceil(numActive / 8)} groups
+          </span>
         </div>
       )}
     </>

@@ -62,9 +62,14 @@ export default function ResultsView({ results, resultRef, onStarChange, onReorde
                     onDragLeave={handleDragLeave}
                     onDrop={() => handleDrop(groupIndex, i)}
                     onDragEnd={handleDragEnd}
-                    className={`transition-opacity ${isDragging ? 'opacity-30' : 'opacity-100'} ${isDropHere ? 'ring-2 ring-blue-400 rounded' : ''}`}
+                    className={`relative transition-opacity ${isDragging ? 'opacity-30' : 'opacity-100'} ${isDropHere ? 'ring-2 ring-blue-400 rounded' : ''}`}
                   >
                     <CharIcon char={char} size='md' />
+                    {(char as any).isFill && (
+                      <span className='absolute top-0 left-0 bg-orange-600 text-white text-[10px] px-1 rounded-br font-bold z-20' title='Filled from pool again'>
+                        ↻
+                      </span>
+                    )}
                   </div>
                 );
               })}
