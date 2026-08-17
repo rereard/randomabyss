@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Character } from '../types';
 
-const TRAVELER_ELEMENTS = ["Anemo", "Geo", "Electro", "Dendro", "Hydro", "Pyro"];
+const TRAVELER_ELEMENTS = ["Anemo", "Geo", "Electro", "Dendro", "Hydro", "Pyro", "Cryo"];
 
 export function useCharacters() {
   const [listChar, setListChar] = useState<Character[]>([]);
@@ -37,8 +37,9 @@ export function useCharacters() {
     setIsTravEleIncluded(include);
     const withoutTraveler = listChar.filter(c => c.name !== "Traveler");
     if (include) {
+      // Use dedicated high ID range (90000000+) to avoid clashing with any character from char_data.json
       const travelers = TRAVELER_ELEMENTS.map((el, i) => ({
-        id: 10000007 + i, name: "Traveler", version: "1.0",
+        id: 90000001 + i, name: "Traveler", version: "1.0",
         rarity: 5, elementText: el, active: true
       }));
       setListChar([...withoutTraveler, ...travelers].sort((a, b) => a.id - b.id));
