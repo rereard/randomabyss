@@ -2172,6 +2172,38 @@
     "version": "7.0"
   },
   {
+    "id": 10000134,
+    "name": "Vesna",
+    "rarity": 5,
+    "elementText": "Anemo",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Vesna",
+        "filename_iconCard": "UI_AvatarIcon_Vesna_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Vesna",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Vesna",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Vesna",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Vesna.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Vesna.png"
+    },
+    "version": "7.1"
+  },
+  {
+    "id": 10000135,
+    "name": "Vodyanitsa",
+    "rarity": 5,
+    "elementText": "Hydro",
+    "images": {
+        "filename_icon": "UI_AvatarIcon_Vodyanitsa",
+        "filename_iconCard": "UI_AvatarIcon_Vodyanitsa_Card",
+        "filename_sideIcon": "UI_AvatarIcon_Side_Vodyanitsa",
+        "filename_gachaSplash": "UI_Gacha_AvatarImg_Vodyanitsa",
+        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Vodyanitsa",
+        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Vodyanitsa.png",
+        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Vodyanitsa.png"
+    },
+    "version": "7.1"
+  },
+  {
       "id": 10000064,
       "name": "Yun Jin",
       "rarity": 4,
