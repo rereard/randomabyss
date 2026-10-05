@@ -48,8 +48,8 @@ export default function ResultsView({ results, resultRef, onStarChange, onReorde
       {results.map((item, groupIndex) => (
         <div className='flex flex-col mb-5' key={groupIndex}>
           <span className='font-bold mb-2 text-sm md:text-base'>Group {groupIndex + 1}:</span>
-          <div className='flex flex-row'>
-            <div className='grid grid-cols-4 gap-2'>
+          <div className='flex flex-row gap-2'>
+            <div className='grid grid-cols-4 lg:grid-cols-8 gap-2'>
               {item.group.map((char, i) => {
                 const isDragging = dragState?.groupIndex === groupIndex && dragState?.fromIndex === i;
                 const isDropHere = dropTarget?.groupIndex === groupIndex && dropTarget?.toIndex === i;
@@ -74,7 +74,7 @@ export default function ResultsView({ results, resultRef, onStarChange, onReorde
                 );
               })}
             </div>
-            <div className='flex flex-col md:flex-row gap-1 justify-center items-center md:ml-3'>
+            <div className='flex flex-col sm:flex-row gap-1 justify-center items-center md:ml-3'>
               <button
                 className={`text-xl ${item.star === 0 ? 'invisible' : ''}`}
                 onClick={() => onStarChange(groupIndex, -1)}
