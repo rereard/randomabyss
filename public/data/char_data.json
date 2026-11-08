@@ -2188,21 +2188,53 @@
     "version": "7.1"
   },
   {
-    "id": 10000135,
-    "name": "Vodyanitsa",
-    "rarity": 5,
-    "elementText": "Hydro",
-    "images": {
-        "filename_icon": "UI_AvatarIcon_Vodyanitsa",
-        "filename_iconCard": "UI_AvatarIcon_Vodyanitsa_Card",
-        "filename_sideIcon": "UI_AvatarIcon_Side_Vodyanitsa",
-        "filename_gachaSplash": "UI_Gacha_AvatarImg_Vodyanitsa",
-        "filename_gachaSlice": "UI_Gacha_AvatarIcon_Vodyanitsa",
-        "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Vodyanitsa.png",
-        "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Vodyanitsa.png"
+      "id": 10000135,
+      "name": "Vodyanitsa",
+      "rarity": 5,
+      "elementText": "Hydro",
+      "images": {
+          "filename_icon": "UI_AvatarIcon_Vodyanitsa",
+          "filename_iconCard": "UI_AvatarIcon_Vodyanitsa_Card",
+          "filename_sideIcon": "UI_AvatarIcon_Side_Vodyanitsa",
+          "filename_gachaSplash": "UI_Gacha_AvatarImg_Vodyanitsa",
+          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Vodyanitsa",
+          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Vodyanitsa.png",
+          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Vodyanitsa.png"
+        },
+        "version": "7.1"
     },
-    "version": "7.1"
-  },
+    {
+      "id": 10000136,
+      "name": "Mitya",
+      "rarity": 5,
+      "elementText": "Electro",
+      "images": {
+          "filename_icon": "UI_AvatarIcon_Mitya",
+          "filename_iconCard": "UI_AvatarIcon_,Mitya_Card",
+          "filename_sideIcon": "UI_AvatarIcon_Side_Mitya",
+          "filename_gachaSplash": "UI_Gacha_AvatarImg_Mitya",
+          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Mitya",
+          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Mitya.png",
+          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Mitya.png"
+      },
+      "version": "7.2"
+    },
+    {
+      "id": 10000137,
+      "name": "Valeriy",
+      "rarity": 4,
+      "elementText": "Electro",
+      "images": {
+          "filename_icon": "UI_AvatarIcon_Valeriy",
+          "filename_iconCard": "UI_AvatarIcon_Valeriy_Card",
+          "filename_sideIcon": "UI_AvatarIcon_Side_Valeriy",
+          "filename_gachaSplash": "UI_Gacha_AvatarImg_Valeriy",
+          "filename_gachaSlice": "UI_Gacha_AvatarIcon_Valeriy",
+          "mihoyo_icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Valeriy.png",
+          "mihoyo_sideIcon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Valeriy.png"
+      },
+      "version": "7.2"
+    },
   {
       "id": 10000064,
       "name": "Yun Jin",
